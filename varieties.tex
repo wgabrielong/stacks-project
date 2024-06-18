@@ -518,20 +518,32 @@ we conclude that $X$ is geometrically reduced at $x$.
 
 \begin{lemma}
 \label{lemma-geometrically-reduced-any-base-change}
-Let $k$ be a field.
-Let $X$, $Y$ be schemes over $k$.
+Let $k$ be a field. Let $X$, $Y$ be schemes over $k$.
 \begin{enumerate}
 \item If $X$ is geometrically reduced at $x$, and $Y$ reduced,
 then $X \times_k Y$ is reduced at every point lying over $x$.
-\item If $X$ geometrically reduced over $k$ and $Y$ reduced.
-Then $X \times_k Y$ is reduced.
+\item If $X$ geometrically reduced over $k$ and $Y$ reduced, then
+$X \times_k Y$ is reduced.
+\item If $X$ and $Y$ are geometrically reduced over $k$, then
+$X \times_k Y$ is geometrically reduced.
+\item If $k$ is perfect and $X$ and $Y$ are reduced, then
+$X \times_k Y$ is reduced.
+\item Add more here.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-Combine, Lemmas \ref{lemma-geometrically-reduced-at-point}
-and \ref{lemma-geometrically-reduced} and Algebra,
-Lemma \ref{algebra-lemma-geometrically-reduced-any-reduced-base-change}.
+To prove (1) combine Lemma \ref{lemma-geometrically-reduced-at-point}
+with Algebra, Lemma
+\ref{algebra-lemma-geometrically-reduced-any-reduced-base-change}.
+To prove (2) comine Lemma \ref{lemma-geometrically-reduced}
+with Algebra, Lemma
+\ref{algebra-lemma-geometrically-reduced-any-reduced-base-change}.
+To prove (3) note that
+$(X \times_k Y)_{\overline{k}} =
+X_{\overline{k}} \times_{\overline{k}} Y_{\overline{k}}$
+and use (2) as well as Lemma \ref{lemma-geometrically-reduced}.
+To prove (4) use (3) combined with Lemma \ref{lemma-perfect-reduced}.
 \end{proof}
 
 \begin{lemma}
@@ -1877,7 +1889,8 @@ over $k$,
 irreducible over $k$,
 \item if $X$ is geometrically irreducible, then $A$ is geometrically
 irreducible over $k$,
-\item if $X$ is geometrically reduced and connected, then $A = k$, and
+\item if $X$ is geometrically reduced and geometrically connected, then
+$A = k$, and
 \item if $X$ is geometrically integral, then $A = k$.
 \end{enumerate}
 \end{lemma}
@@ -1929,7 +1942,7 @@ Thus $A$ is geometrically irreducible. This proves (5).
 Of course (5) implies (6).
 
 \medskip\noindent
-If $X$ is geometrically reduced and connected, then
+If $X$ is geometrically reduced and geometrically connected, then
 $A = k_1$ is a field and the extension $k_1/k$ is finite separable and
 geometrically irreducible. However, then $k_1 \otimes_k \overline{k}$
 is a product of $[k_1 : k]$ copies of $\overline{k}$ and we conclude
@@ -7393,7 +7406,7 @@ semi-local Noetherian ring of dimension $1$. By induction we define
 $$
 R_{i + 1} = R_i \times_K B_{\mathfrak m_{i + 1}}
 $$
-for $i = 1, \ldots, r - 1$. Observe that $R = R_n$ because
+for $i = 1, \ldots, r - 1$. Observe that $R = R_r$ because
 $B = B_{\mathfrak m_1} \cap \ldots \cap B_{\mathfrak m_r}$ (see
 Algebra, Lemma
 \ref{algebra-lemma-normal-domain-intersection-localizations-height-1}).
@@ -8357,7 +8370,7 @@ Let $A'$, resp.\ $B'$ be the integral closure of $A$, resp.\ $B$
 in its total ring of fractions.
 Then $B' = A' \otimes_A B$ by
 Lemma \ref{lemma-normalization-same-after-completion}.
-Hence $B'/B = A'/A \otimes_A B$.
+Hence $B'/B = (A'/A) \otimes_A B$.
 The equality now follows from
 Algebra, Lemma \ref{algebra-lemma-pullback-module}
 and the fact that $B \otimes_A \kappa_A = \kappa_B$.

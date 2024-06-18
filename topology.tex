@@ -238,9 +238,9 @@ $(x, x') \in X \times_Y X$ be a point not contained in $\Delta(F)$.
 Then either $x \not = x'$ or $x \not \in F$.
 In the first case, we choose disjoint open neighbourhoods
 $V, V' \subset X$ of $x, x'$ and we see that $(V \times V') \cap X \times_Y X$
-is an open neighbourood of $(x, x')$ not meeting $\Delta(F)$.
+is an open neighbourhood of $(x, x')$ not meeting $\Delta(F)$.
 In the second case, we see that $((X \setminus F) \times X) \cap X \times_Y X$
-is an open neighbourood of $(x, x')$ not meeting $\Delta(F)$.
+is an open neighbourhood of $(x, x')$ not meeting $\Delta(F)$.
 We have shown that (3) implies (1).
 \end{proof}
 
@@ -259,12 +259,12 @@ in $X \times_Y X$.
 \begin{lemma}
 \label{lemma-base-change-separated}
 Let $f : X \to Y$ and $Y' \to Y$ be continuous maps of topological spaces.
-If $f$ is separated, then $f' : Y' \times_Y X \to Z$ is separated.
+If $f$ is separated, then $f' : Y' \times_Y X \to Y'$ is separated.
 \end{lemma}
 
 \begin{proof}
-Follows from characterization (3) of Lemma \ref{lemma-separated}.
-Namely, with $X' = Y' \times_Y X$ the image $\Delta(X')$ of the diagonal
+Follows from characterization (2) of Lemma \ref{lemma-separated}.
+Namely, with $X' = Y' \times_Y X$ the diagonal $\Delta(X')$
 in the fibre product $X' \times_{Y'} X'$ is the inverse image of
 $\Delta(X)$ in $X \times_Y X$.
 \end{proof}
@@ -1161,6 +1161,9 @@ the ``soberification''.
 
 \begin{lemma}
 \label{lemma-make-sober}
+\begin{reference}
+\cite[Page 68 ff]{EGA1-second}
+\end{reference}
 Let $X$ be a topological space. There is a canonical continuous map
 $$
 c : X \longrightarrow X'
@@ -3455,13 +3458,14 @@ As $X$ is Jacobson $A$ has a point closed in $X$.
 \begin{lemma}
 \label{lemma-finite-jacobson}
 A finite Jacobson space is discrete.
+A Jacobson space with finitely many closed points is discrete.
 \end{lemma}
 
 \begin{proof}
-If $X$ is finite Jacobson, $X_0 \subset X$ the subset of closed points,
-then, on the one hand, $\overline{X_0} = X$. On the other hand, $X$,
-and hence $X_0$ is finite, so
-$X_0 =\{x_1, \ldots, x_n\} = \bigcup_{i = 1, \ldots, n} \{x_i\}$
+If $X$ is finite then the set $X_0 \subset X$ of closed points is finite.
+Assume $X_0$ is is finite and $X$ is Jacobson.
+Then $\overline{X_0} = X$ by the Jacobson property.
+Now $X_0 =\{x_1, \ldots, x_n\} = \bigcup_{i = 1, \ldots, n} \{x_i\}$
 is a finite union of closed sets, hence closed, so
 $X = \overline{X_0} = X_0$. Every point is closed, and by
 finiteness, every point is open.
@@ -4002,7 +4006,14 @@ dense sets is a nowhere dense set.
 \end{lemma}
 
 \begin{proof}
-Omitted.
+It suffices to prove the lemma for two nowhere dense sets as the result in
+general will follow by induction. Let $A,B \subset X$ be nowhere dense subsets.
+We have $\overline{A \cup B} = \overline{A} \cup \overline{B}$.
+Hence, if $U \subset \overline{A \cup B}$ is an open subset of $X$, then
+$U \setminus U \cap \overline{B}$ is an open subset of $U$ and of $X$
+and contained in $\overline{A}$ and hence empty. Similarly
+$U \setminus U \cap \overline{A}$ is empty. Thus $U = \emptyset$
+as desired.
 \end{proof}
 
 \begin{lemma}
@@ -4054,7 +4065,12 @@ and $T$ is nowhere dense in $X$, then also $f(T)$ is nowhere dense in $Y$.
 \end{lemma}
 
 \begin{proof}
-Omitted.
+Because $f(X)$ is closed in $Y$ and $f$ is a homeomorphism of $X$
+onto $f(X)$, we see that the closure of $f(T)$ in $Y$ equals $f(\overline{T})$.
+Hence if $V \subset Y$ is open and contained in the closure of $f(T)$,
+then $U = f^{-1}(V)$ is open and contained in $\overline{T}$.
+Hence $U = \emptyset$, which in turn shows that $V = \emptyset$
+as desired.
 \end{proof}
 
 \begin{lemma}
@@ -5327,9 +5343,10 @@ proper closed subset $E \subset X$ such that $X = E \cup f(E)$.
 Pick $p \in X$ with $f(p) \not = p$. Choose disjoint open neighbourhoods
 $p \in U$, $f(p) \in V$ and set $E = X \setminus U \cap f^{-1}(V)$.
 Then $p \not \in E$ hence $E$ is a proper closed subset.
-If $x \in X$, then either $x \in E$, or if not, then $x \in U \cap f^{-1}(V)$
-and writing $x = f(y)$ (possible as $f$ is surjective) we find
-$y \in V \subset E$ and $x \in f(E)$.
+If $x \in X$, then either $x \in E$, or if not, then $x \in U \cap f^{-1}(V)$.
+Writing $x = f(y)$ (possible as $f$ is surjective). If $y \in U \cap f^{-1}(V)$
+then we would have $x = f(y) \in V$ which is a contradiction with
+$x \in U$. Hence $y \in E$ and $x \in f(E)$.
 \end{proof}
 
 \begin{example}

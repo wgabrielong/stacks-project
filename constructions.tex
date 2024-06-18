@@ -388,7 +388,7 @@ $$
 with the following properties:
 \begin{enumerate}
 \item for every affine open $U \subset S$ there exists an isomorphism
-$i_U : \pi^{-1}(U) \to \Spec(\mathcal{A}(U))$, and
+$i_U : \pi^{-1}(U) \to \Spec(\mathcal{A}(U))$ over $U$, and
 \item for $U \subset U' \subset S$ affine open the composition
 $$
 \xymatrix{
@@ -400,6 +400,8 @@ $$
 $$
 is the open immersion of Lemma \ref{lemma-spec-inclusion} above.
 \end{enumerate}
+Moreover, $\underline{\Spec}_S(\mathcal{A})$
+is unique up to unique isomorphism over $S$.
 \end{lemma}
 
 \begin{proof}
@@ -407,6 +409,8 @@ Follows immediately from
 Lemmas \ref{lemma-relative-glueing},
 \ref{lemma-spec-inclusion}, and
 \ref{lemma-transitive-spec}.
+Uniqueness is stated in the last sentence of
+Lemma \ref{lemma-relative-glueing}.
 \end{proof}
 
 
@@ -557,7 +561,7 @@ and that $(f_i, \varphi_i) \in F(U_i)$ such that
 $(f_i, \varphi_i)|_{U_i \cap U_j} = (f_j, \varphi_j)|_{U_i \cap U_j}$.
 This implies that the morphisms $f_i : U_i \to S$
 glue to a morphism of schemes $f : T \to S$ such that
-$f|_{I_i} = f_i$, see Schemes, Section \ref{schemes-section-glueing-schemes}.
+$f|_{U_i} = f_i$, see Schemes, Section \ref{schemes-section-glueing-schemes}.
 Thus $f_i^*\mathcal{A} = f^*\mathcal{A}|_{U_i}$ and by assumption the
 morphisms $\varphi_i$ agree on $U_i \cap U_j$. Hence by Sheaves,
 Section \ref{sheaves-section-glueing-sheaves} these glue to a
@@ -618,8 +622,7 @@ Lemma \ref{lemma-glue-relative-spec} part (2).
 Hence by Sheaves, Lemma \ref{sheaves-lemma-restrict-basis-equivalence-modules}
 these isomorphisms result from an isomorphism of $\mathcal{O}_S$-algebras
 $\varphi : \mathcal{A} \to \mathcal{R}$. Hence this gives an element
-$(\underline{\Spec}_S(\mathcal{A}), \varphi)
-\in F(\underline{\Spec}_S(\mathcal{A}))$.
+$(\pi, \varphi) \in F(\underline{\Spec}_S(\mathcal{A}))$.
 Since $X$ represents the functor $F$ we get a corresponding
 morphism of schemes $can : \underline{\Spec}_S(\mathcal{A}) \to X$
 over $S$.
@@ -1724,8 +1727,8 @@ we get maps
 \longrightarrow
 \mathcal{F}(n + m).
 \end{equation}
-The maps (\ref{equation-multiply}) on global sections give a map of graded
-rings
+The maps (\ref{equation-map-global-sections-degree-n})
+on global sections give a map of graded rings
 \begin{equation}
 \label{equation-global-sections}
 S \longrightarrow \bigoplus\nolimits_{n \geq 0} \Gamma(X, \mathcal{O}_X(n)).
@@ -2139,7 +2142,7 @@ Set $X = \text{Proj}(A)$, $Y = \text{Proj}(B)$ and $Z = \text{Proj}(C)$.
 Let $\varphi : A \to B$, $\psi : B \to C$ be graded ring maps.
 Then we have
 $$
-U(\psi \circ \varphi) = r_\varphi^{-1}(U(\psi))
+U(\psi \circ \varphi) = r_\psi^{-1}(U(\varphi))
 \quad
 \text{and}
 \quad

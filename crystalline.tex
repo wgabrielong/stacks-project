@@ -890,7 +890,7 @@ exists a morphism $D \to B$ of $\text{Cris}^\wedge(C/A)$.
 \begin{proof}
 We can find an $A$-algebra homomorphism $P \to B$ compatible
 with maps to $C$. By our definition of
-$\text{Cris}(C/A)$ we see that $P \to B$ factors as
+$\text{Cris}^\wedge(C/A)$ we see that $P \to B$ factors as
 $P \to D_{P, \gamma}(J) \to B$. As $B$ is $p$-adically complete
 we can factor this map through $D$.
 \end{proof}
@@ -1013,12 +1013,13 @@ divided power rings.
 \medskip\noindent
 Recall that $K/K^2$ has a canonical $B$-module structure.
 Denote $s_0, s_1 : B \to B(1)$ the two coprojections and consider
-the map $\text{d} : B \to K/K^2 +(K \cap J(1))^{[2]}$ given by
+the map $\text{d} : B \to K/(K^2 +(K \cap J(1))^{[2]})$ given by
 $b \mapsto s_1(b) - s_0(b)$. It is clear that $\text{d}$ is additive,
 annihilates $A$, and satisfies the Leibniz rule.
 We claim that $\text{d}$ is a divided power $A$-derivation.
 Let $x \in J$. Set $y = s_1(x)$ and $z = s_0(x)$.
-Denote $\delta$ the divided power structure on $J(1)$.
+We will use $\delta$ instead of $\delta(1)$ for
+the divided power structure on $J(1)$.
 We have to show that $\delta_n(y) - \delta_n(z) = \delta_{n - 1}(y)(y - z)$
 modulo $K^2 +(K \cap J(1))^{[2]}$ for $n \geq 1$.
 The equality holds for $n = 1$. Assume $n > 1$.
@@ -1087,7 +1088,7 @@ Word for word the same as the proof of
 Lemma \ref{lemma-diagonal-and-differentials}.
 The only point that has to be checked is that the
 divided power ring $D = B \oplus M$ is an object of $\text{CRIS}(C/A)$
-and that the two maps $B \to C$ are morphisms of $\text{CRIS}(C/A)$.
+and that the two maps $B \to D$ are morphisms of $\text{CRIS}(C/A)$.
 Since $D/(J \oplus M) = B/J$ we can use $C \to B/J$ to view
 $D$ as an object of $\text{CRIS}(C/A)$
 and the statement on morphisms is clear from the construction.
@@ -2414,7 +2415,7 @@ T & T' \ar[l]_{p_0} \ar[r]^{p_1} & T
 $$
 of $\text{Cris}(X/S)$ such that $i$ is a first order thickening whose ideal
 sheaf is identified with $\Omega_{T/S, \delta}$ and such that
-$p_1^* - p_0^* : \mathcal{O}_T \to \mathcal{O}_{T'}$
+$p_1 - p_0 : \mathcal{O}_T \to \mathcal{O}_{T'}$
 is identified with the universal derivation $\text{d}_{T/S, \delta}$
 composed with the inclusion $\Omega_{T/S, \delta} \to \mathcal{O}_{T'}$.
 \end{remark}

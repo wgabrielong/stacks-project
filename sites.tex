@@ -378,7 +378,7 @@ u^p :
 $$
 the functor that associates to $\mathcal{G}$ on $\mathcal{D}$ the presheaf
 $u^p\mathcal{G} = \mathcal{G} \circ u$. Note that by the previous section
-this functor commutes with all limits.
+this functor commutes with all limits and colimits.
 
 \medskip\noindent
 For $V \in \Ob(\mathcal{D})$ let $\mathcal{I}^u_V$
@@ -408,7 +408,7 @@ u(f) \circ \phi = \phi'
 \}
 \end{matrix}
 \end{equation}
-We sometimes drop the subscript ${}^u$ from the notation and we simply write
+We sometimes drop the superscript ${}^u$ from the notation and we simply write
 $\mathcal{I}_V$.
 We will use these categories to define a left adjoint to the functor $u^p$.
 Before we do so we prove a few technical lemmas.
@@ -593,14 +593,15 @@ is that it is clearly functorial in everything in sight.)
 \medskip\noindent
 Conversely, given a map $\beta : \mathcal{F} \to u^p\mathcal{G}$
 we get a map $u_p\beta : u_p\mathcal{F} \to u_p u^p\mathcal{G}$.
-We claim that the functor $u^p\mathcal{G}_Y$ on $\mathcal{I}_Y$
-has a canonical map to the constant functor with value $\mathcal{G}(Y)$.
-Namely, for every object $(X, \phi)$ of $\mathcal{I}_Y$,
-the value of $u^p\mathcal{G}_Y$ on this object is $\mathcal{G}(u(X))$
-which maps to $\mathcal{G}(Y)$ by $\mathcal{G}(\phi) = \phi^* $.
+Let $V \in \Ob(\mathcal{D})$.
+We claim that the functor $u^p\mathcal{G}_V$ on $\mathcal{I}_V$
+has a canonical map to the constant functor with value $\mathcal{G}(V)$.
+Namely, for every object $(U, \phi)$ of $\mathcal{I}_V$,
+the value of $u^p\mathcal{G}_V$ on this object is $\mathcal{G}(u(U))$
+which maps to $\mathcal{G}(V)$ by $\mathcal{G}(\phi) = \phi^*$.
 This is a transformation of functors because $\mathcal{G}$ is a functor
-itself. This leads to a map $u_p u^p \mathcal{G}(Y) \to \mathcal{G}(Y)$.
-Another trivial verification shows that this is functorial in $Y$
+itself. This leads to a map $u_p u^p \mathcal{G}(V) \to \mathcal{G}(V)$.
+Another trivial verification shows that this is functorial in $V$
 leading to a map of presheaves $u_p u^p \mathcal{G} \to \mathcal{G}$.
 The composition $u_p\mathcal{F} \to u_p u^p\mathcal{G} \to
 \mathcal{G}$ is the desired map.
@@ -1677,6 +1678,9 @@ simple lemma about limits of sheaves.
 
 \begin{lemma}
 \label{lemma-limit-sheaf}
+\begin{slogan}
+Limit of diagram of sheaves exists and coincides with limit as presheaves
+\end{slogan}
 Let $\mathcal{F} : \mathcal{I} \to \Sh(\mathcal{C})$
 be a diagram. Then $\lim_\mathcal{I} \mathcal{F}$ exists
 and is equal to the limit in the category of presheaves.
@@ -2148,7 +2152,7 @@ $s_i \in \mathcal{F}(U_i)$ such that
 \item $s|_{U_i} = \theta^2(s_i)$, and
 \item for every $i, j$ there exists a covering
 $\{U_{ijk} \to U_i \times_U U_j\}$ of $\mathcal{C}$ such that
-the pullback of $s_i$ and $s_j$ to each $U_{ijk}$ agree.
+the pullbacks of $s_i$ and $s_j$ to each $U_{ijk}$ agree.
 \end{enumerate}
 Conversely, given any covering $\{U_i \to U\}$, elements
 $s_i \in \mathcal{F}(U_i)$ such that (2) holds, then there
@@ -2160,9 +2164,53 @@ that (1) holds.
 Omitted.
 \end{proof}
 
+\begin{lemma}
+\label{lemma-isomorphism-sheafifications}
+Let $\mathcal{C}$ be a site. Let $\mathcal{F} \to \mathcal{G}$ be a map
+of presheaves of sets on $\mathcal{C}$. Denote $\mathcal{B}$ the set of
+$U \in \Ob(\mathcal{C})$ such that $\mathcal{F}(U) \to \mathcal{G}(U)$
+is bijective. If every object of $\mathcal{C}$ has a covering by elements
+of $\mathcal{B}$, then $\mathcal{F}^\# \to \mathcal{G}^\#$ is an isomorphism.
+\end{lemma}
 
-
-
+\begin{proof}
+Let $U \in \Ob(\mathcal{C})$.
+Let us prove that $\mathcal{F}^\#(U) \to \mathcal{G}^\#(U)$ is
+surjective. To do this we will use Lemma \ref{lemma-sections-sheafification}
+without further mention. For any $s \in \mathcal{G}^\#(U)$ there exists
+a covering $\{U_i \to U\}$ and sections $s_i \in \mathcal{G}(U_i)$ such that
+\begin{enumerate}
+\item $s|_{U_i}$ is the image of $s_i$ via $\mathcal{G} \to \mathcal{G}^\#$,
+and
+\item for every $i, j$ there exists a covering
+$\{U_{ijk} \to U_i \times_U U_j\}$ of $\mathcal{D}$ such that
+the pullbacks of $s_i$ and $s_j$ to each $U_{ijk}$ agree.
+\end{enumerate}
+By assumption, for each $i$ we may choose a covering $\{U_{i, a} \to U_i\}$
+with $U_{i, a} \in \mathcal{B}$. Then $\{U_{i, a} \to U\}$ is a covering.
+Denoting $s_{i, a}$ the image of $s_i$ in $\mathcal{G}(U_{i, a})$
+we see that the pullbacks of $s_{i, a}$ and $s_{j, b}$ to the members
+of the covering
+$$
+\{(U_{i, a} \times_U U_{j, b}) \times_{U_i \times_U U_j} U_{ijk}
+\to U_{i, a} \times_U U_{j, b}\}
+$$
+agree. Hence we may assume that $U_i \in \mathcal{B}$. Repeating
+the argument, we may also assume $U_{ijk} \in \mathcal{B}$ for
+all $i, j, k$ (details omitted).
+Then since $\mathcal{F}(U_i) \to \mathcal{G}(U_i)$
+is bijective by our definition of $\mathcal{B}$ in the statement
+of the lemma, we get unique $t_i \in \mathcal{F}(U_i)$
+mapping to $s_i$. The pullbacks of $t_i$ and $t_j$
+to each $U_{ijk}$ agree in $\mathcal{F}(U_{ijk})$ because
+$U_{ijk} \in \mathcal{B}$ and because we have the agreement
+for $t_i$ and $t_j$.
+Then the lemma tells us there exists a unique
+$t \in \mathcal{F}^\#(U)$ such that $t|_{U_i}$ is the image of $t_i$.
+It follows that $t$ maps to $s$.
+We omit the proof that $\mathcal{F}^\#(U) \to \mathcal{G}^\#(U)$
+is injective.
+\end{proof}
 
 
 
@@ -4173,22 +4221,6 @@ v^p\mathcal{F}(V)
 which proves part (4). Part (5) follows by the uniqueness of adjoint functors.
 \end{proof}
 
-\begin{lemma}
-\label{lemma-continuous-with-continuous-left-adjoint}
-A continuous functor of sites which has a continuous left adjoint
-defines a morphism of sites.
-\end{lemma}
-
-\begin{proof}
-Let $u : \mathcal{C} \to \mathcal{D}$ be a continuous functor of sites.
-Let $w : \mathcal{D} \to \mathcal{C}$ be a continuous left adjoint.
-Then $u_p = w^p$ by Lemma \ref{lemma-adjoint-functors}.
-Hence $u_s = w^s$ has a left adjoint, namely $w_s$
-(Lemma \ref{lemma-adjoint-sheaves}). Thus $u_s$ has both a right and a
-left adjoint, whence is exact
-(Categories, Lemma \ref{categories-lemma-exact-adjoint}).
-\end{proof}
-
 
 
 
@@ -4787,67 +4819,76 @@ open covering of $X$.
 \label{section-cocontinuous-adjoint}
 
 \noindent
-It may happen that a cocontinuous functor $u$ has a right adjoint $v$.
-In this case it is often the case that $v$ is continuous, and if so,
-then it defines a morphism of topoi (which is the same as the one
-defined by $u$).
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites. Let
+$u : \mathcal{C} \to \mathcal{D}$ and $v : \mathcal{D} \to \mathcal{C}$
+be functors of the underlying categories such that $v$ is right adjoint to $u$.
+In this case, if $v$ is continuous, then $u$ is cocontinuous
+(Lemma \ref{lemma-continuous-with-continuous-left-adjoint}).
+If $u$ is cocontinuous, then it is often
+(but not always, see Example \ref{example-not-equivalent})
+the case that $v$ is continuous, and if so, then
+$v$ defines a morphism of sites whose
+associated morphism of topoi is the same as that defined by $u$.
 
 \begin{lemma}
 \label{lemma-have-functor-other-way}
 Let $\mathcal{C}$ and $\mathcal{D}$ be sites. Let
 $u : \mathcal{C} \to \mathcal{D}$, and $v : \mathcal{D} \to \mathcal{C}$
-be functors. Assume that $u$ is cocontinuous,
+be functors. Assume that $u$ is cocontinuous
 and that $v$ is a right adjoint to $u$.
 Let $g : \Sh(\mathcal{C}) \to \Sh(\mathcal{D})$ be
 the morphism of topoi associated to $u$, see
 Lemma \ref{lemma-cocontinuous-morphism-topoi}.
-Then $g_*\mathcal{F}$ is equal to the presheaf
-$v^p\mathcal{F}$, in other words, $(g_*\mathcal{F})(V) = \mathcal{F}(v(V))$.
+Then
+\begin{enumerate}
+\item for a sheaf $\mathcal{F}$ on $\mathcal{C}$ the sheaf
+$g_*\mathcal{F}$ is equal to the presheaf $v^p\mathcal{F}$, in other words,
+$(g_*\mathcal{F})(V) = \mathcal{F}(v(V))$, and
+\item for a sheaf $\mathcal{G}$ on $\mathcal{D}$ we have
+$g^{-1}\mathcal{G} = (v_p\mathcal{G})^\#$.
+\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-We have $u^ph_V = h_{v(V)}$ by Lemma \ref{lemma-adjoint-functors}.
-By Lemma \ref{lemma-technical-pu} this implies that
-$g^{-1}(h_V^\#) = (u^ph_V^\#)^\# = (u^ph_V)^\# = h_{v(V)}^\#$.
-Hence for any sheaf $\mathcal{F}$ on $\mathcal{C}$ we have
-\begin{eqnarray*}
-(g_*\mathcal{F})(V)
-& = &
-\Mor_{\Sh(\mathcal{D})}(h_V^\#, g_*\mathcal{F}) \\
-& = &
-\Mor_{\Sh(\mathcal{C})}(g^{-1}(h_V^\#), \mathcal{F}) \\
-& = &
-\Mor_{\Sh(\mathcal{C})}(h_{v(V)}^\#, \mathcal{F}) \\
-& = &
-\mathcal{F}(v(V))
-\end{eqnarray*}
-which proves the lemma.
+For $\mathcal{F}$ as in (1) we have
+$$
+g_*\mathcal{F} =
+{}_su\mathcal{F} =
+{}_pu\mathcal{F} =
+v^p\mathcal{F} =
+\mathcal{F} \circ v
+$$
+The first equality is Lemma \ref{lemma-cocontinuous-morphism-topoi}.
+The second equality is Lemma \ref{lemma-pu-sheaf}.
+The third equality is Lemma \ref{lemma-adjoint-functors}.
+The final equality is the definition of $v^p$ in
+Section \ref{section-functoriality-PSh}. This proves (1).
+For $\mathcal{G}$ as in (2) we have
+$$
+g^{-1}\mathcal{G} = (u^p\mathcal{G})^\# = (v_p\mathcal{G})^\#
+$$
+The first equality is Lemma \ref{lemma-cocontinuous-morphism-topoi}.
+The second equality is Lemma \ref{lemma-adjoint-functors}.
 \end{proof}
-
-\noindent
-In the situation of Lemma \ref{lemma-have-functor-other-way}
-we see that $v^p$ transforms sheaves
-into sheaves. Hence we can define $v^s = v^p$ restricted to sheaves.
-Just as in Lemma \ref{lemma-adjoint-sheaves} we see that
-$v_s : \mathcal{G} \mapsto (v_p\mathcal{G})^\#$ is a left adjoint to $v^s$.
-On the other hand, we have $v^s = g_*$ and $g^{-1}$ is a left
-adjoint of $g_*$ as well. We conclude that $g^{-1} = v_s$ is exact.
 
 \begin{lemma}
 \label{lemma-have-functor-other-way-morphism}
-In the situation of Lemma \ref{lemma-have-functor-other-way}.
-We have $g_* = v^s = v^p$ and $g^{-1} = v_s = (v_p\ )^\#$.
-If $v$ is continuous then $v$ defines a morphism of sites $f$
-from $\mathcal{C}$ to $\mathcal{D}$ whose associated morphism
-of topoi is equal to the morphism $g$ associated to the cocontinuous
-functor $u$. In other words, a continuous functor which has a
-cocontinuous left adjoint defines a morphism of sites.
+Notation and assumptions as in Lemma \ref{lemma-have-functor-other-way}.
+If in addition $v$ is continuous then $v$ defines a morphism of sites
+$f : \mathcal{C} \to \mathcal{D}$ whose associated morphism
+of topoi is equal to $g$.
 \end{lemma}
 
 \begin{proof}
-Clear from the discussion above the lemma and
-Definitions \ref{definition-morphism-sites} and
-Lemma \ref{lemma-morphism-sites-topoi}.
+We will use the results of Lemma \ref{lemma-have-functor-other-way}
+without further mention. To prove that $v$ defines a morphism of sites
+$f$ as in the statement of the lemma,
+we have to show that $v_s$ is an exact functor (see
+Definition \ref{definition-morphism-sites}). Since
+$v_s\mathcal{G} = (v_p\mathcal{G})^\# = g^{-1}\mathcal{G}$
+this follows from the fact that $g$ is a morphism of topoi.
+Then we see that $f^{-1} = v_s = g^{-1}$ and we find that $f = g$
+as morphisms of topoi.
 \end{proof}
 
 \begin{example}
@@ -4870,8 +4911,59 @@ whose corresponding morphism of topoi is the same as the morphism
 of topoi associated to the cocontinuous functor $u$.
 \end{example}
 
+\begin{lemma}
+\label{lemma-continuous-with-continuous-left-adjoint}
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites and let
+$v : \mathcal{D} \to \mathcal{C}$ be a continuous functor.
+Assume $v$ has a left adjoint $u : \mathcal{C} \to \mathcal{D}$. Then
+\begin{enumerate}
+\item $u$ is cocontinuous,
+\item the results of Lemmas \ref{lemma-have-functor-other-way} and
+\ref{lemma-have-functor-other-way-morphism} hold.
+\end{enumerate}
+In particular, $v$ defines a morphism of sites
+$f : \mathcal{D} \to \mathcal{C}$.
+\end{lemma}
 
+\begin{proof}
+Let $U$ be an object of $\mathcal{C}$ and let $\{V_j \to u(U)\}_{j \in J}$
+be a covering in $\mathcal{D}$. Then $\{v(V_j) \to v(u(U))\}_{i \in I}$ is
+a covering in $\mathcal{C}$. Via the adjunction map $U \to v(u(U))$ we
+can base change this to a covering $\{W_j \to U\}_{j \in J}$ with
+$W_j = v(V_j) \times_{v(u(U))} U$. Denoting $p_j : W_j \to v(V_j)$ the
+first projection, we obtain maps
+$$
+u(W_j) \xrightarrow{u(p_j)} u(v(V_j)) \longrightarrow V_j
+$$
+where the second arrow is the adjunction map. This determines a morphism
+$\{u(W_j) \to u(U)\} \to \{V_j \to u(U)\}$ of families of maps with fixed
+target, showing that $u$ is indeed cocontinuous. The other statements are
+immediate from Lemmas \ref{lemma-have-functor-other-way} and
+\ref{lemma-have-functor-other-way-morphism}.
+\end{proof}
 
+\begin{example}
+\label{example-not-equivalent}
+Let $\mathcal{C}$ and $\mathcal{D}$ be sites. Let
+$u : \mathcal{C} \to \mathcal{D}$ and $v : \mathcal{D} \to \mathcal{C}$
+be functors of the underlying categories such that $v$ is right adjoint to $u$.
+Lemma \ref{lemma-continuous-with-continuous-left-adjoint}
+shows that if $v$ is continuous, then $u$ is cocontinous.
+Conversely, if $u$ is cocontinuous, then we can't conclude that $v$
+is continuous. We will give an example of this phenomenon using
+the big \'etale and smooth sites of a scheme, but presumably there is an
+elementary example as well. Namely, consider a scheme $S$ and the sites
+$(\Sch/S)_\etale$ and $(\Sch/S)_{smooth}$. We may assume these
+sites have the same underlying category, see
+Topologies, Remark \ref{topologies-remark-choice-sites}.
+Let $u = v = \text{id}$. Then $u$ as a functor
+from $(\Sch/S)_\etale$ to $(\Sch/S)_{smooth}$ is cocontinuous
+as every smooth covering of a scheme can be refined by an \'etale
+covering, see More on Morphisms, Lemma
+\ref{more-morphisms-lemma-etale-dominates-smooth}.
+Conversely, the functor $v$ from $(\Sch/S)_{smooth}$ to $(\Sch/S)_\etale$
+is not continuous as a smooth covering is not an \'etale covering in general.
+\end{example}
 
 
 
@@ -7105,27 +7197,31 @@ we will show that $g^{-1} \circ u_s = f^{-1}$. Namely, then since $g^{-1}$
 is an equivalence and $f^{-1}$ is exact we will conclude.
 Because $g^{-1}$ is adjoint to $g_*$, and $u_s$ is adjoint to
 $u^s$, and $f^{-1}$ is adjoint to $f_*$ it also suffices to prove that
-$u^s \circ g_* = f_*$.
-Let $U$ be an object of $\mathcal{C}$ and let
-$V$ be an object of $\mathcal{D}$. Then
+$u^s \circ g_* = f_*$. Let $\mathcal{F}$ be a sheaf on $\mathcal{C}$
+and let $V$ be an object of $\mathcal{D}$. Then
 \begin{align*}
-(u^sg_*h_U^\#)(V)
+(u^s g_{\ast}\mathcal{F})(V)
 & =
-g_*h_U^\#(f^{-1}h_V^\#) \\
+(g_{\ast}\mathcal{F})(f^{-1}h_V^\#) \\
 & =
-\Mor_{\Sh(\mathcal{C})}(f^{-1}h_V^\#, h_U^\#) \\
+\Mor_{Sh(\mathcal{C}')}(h_{f^{-1}h_V^\#},g_{\ast}\mathcal{F}) \\
 & =
-\Mor_{\Sh(\mathcal{D})}(h_V^\#, f_*h_U^\#) \\
-& = f_*h_U^\#(V)
+\Mor_{Sh(\mathcal{C})}(g^{-1}h_{f^{-1}h_V^\#},\mathcal{F}) \\
+& =
+\Mor_{Sh(\mathcal{C})}(f^{-1}h_V^\#,\mathcal{F}) \\
+& =
+\Mor_{Sh(\mathcal{D})}(h_V^\#,f_{\ast}\mathcal{F}) \\
+& =
+f_{\ast}\mathcal{F}(V)
 \end{align*}
-The first equality because $u^s = u^p$. The second equality
-by Lemma \ref{lemma-special-equivalence} (5). The third equality
-by adjointness of $f_*$ and $f^{-1}$ and the final equality by
-properties of sheafification and the Yoneda lemma.
-We omit the verification that these identities are functorial in $U$
-and $V$. Hence we see that
-we have $u^s \circ g_* = f_*$ for sheaves of the form $h_U^\#$.
-This implies that $u^s \circ g_* = f_*$ and we win (some details omitted).
+The first equality because $u^s = u^p$.
+The second equality is the Yoneda lemma.
+The third equality by adjointness of $g^{-1}$ and $g_*$.
+The fourth equality is by Lemma \ref{lemma-special-equivalence} (4).
+The fifth equality by adjointness of $f^{-1}$ and $f_*$.
+The sixth equality by the Yoneda lemma.
+Hence $u^s g_*\mathcal{F} = f_*\mathcal{F}$ and
+this finishes the proof of the lemma.
 \end{proof}
 
 \begin{remark}
@@ -7464,8 +7560,8 @@ j^{-1}(\mathcal{H} \to \mathcal{F}) =
 $$
 and
 $$
-j_!(\mathcal{E} \xrightarrow{e} \mathcal{F}) =
-(\mathcal{E} \xrightarrow{s \circ e} \mathcal{G}).
+j_!(\mathcal{E} \xrightarrow{e} \mathcal{G}) =
+(\mathcal{E} \xrightarrow{s \circ e} \mathcal{F}).
 $$
 \end{lemma}
 
@@ -8971,15 +9067,18 @@ products, etc. We will also use that injective maps are the monomorphisms
 and the surjective maps are the epimorphisms.
 A map of sheaves $\varphi : \mathcal{F} \to \mathcal{G}$
 is injective if and only if
-$\mathcal{F} \to \mathcal{F} \times_\mathcal{G}\mathcal{F}$
+$\mathcal{F} \to \mathcal{F} \times_\mathcal{G} \mathcal{F}$
 is an isomorphism. Hence (1).
 Similarly, $\varphi : \mathcal{F} \to \mathcal{G}$
 is surjective if and only if
 $\mathcal{G} \amalg_\mathcal{F} \mathcal{G} \to \mathcal{G}$
 is an isomorphism. Hence (2).
 The maps $a, b : \mathcal{F} \to \mathcal{G}$
-are equal if and only if $\mathcal{F} \times_{a, \mathcal{G}, b}\mathcal{F}
-\to \mathcal{F} \times \mathcal{F}$ is an isomorphism. Hence (3).
+are equal if and only if
+$\text{Equalizer}(a, b : \mathcal{F} \to \mathcal{G}) \to \mathcal{F}$
+is an isomorphism\footnote{The equalizer can be expressed
+in terms of products and fibre products, see proof of
+Categories, Lemma \ref{categories-lemma-finite-limits-exist}.}. Hence (3).
 The assertions (4) and (5) follow immediately from the definitions
 and the remarks at the start of this proof.
 \end{proof}

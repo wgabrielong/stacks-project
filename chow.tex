@@ -265,10 +265,18 @@ $e_R(M, \varphi, \psi) = 0$.
 \end{lemma}
 
 \begin{proof}
-This follows from the additity of
+Observe that on the category of $2$-periodic complexes with $M$, $N$
+of finite length the quantity ``$\text{length}_R(M) - \text{length}_R(N)$''
+is additive in short exact sequences (precise statement left to the reader).
+Consider the short exact sequence
+$$
+0 \to (M, \Im(\varphi), \varphi, 0) \to
+(M, N, \varphi, \psi) \to (0, N/\Im(\varphi), 0, 0) \to 0
+$$
+The intial remark combined with the additivity of
 Lemma \ref{lemma-additivity-periodic-length}
-and the short exact sequence
-$0 \to (M, 0, 0, 0) \to (M, N, \varphi, \psi) \to (0, N, 0, 0) \to 0$.
+reduces us to the cases (a) $M = 0$ and (b) $\varphi$ is surjective.
+We leave those cases to the reader.
 \end{proof}
 
 \begin{lemma}
@@ -1706,7 +1714,7 @@ $$
 \text{length}_{\mathcal{O}_{X, \xi}} \mathcal{F}_\xi < \infty
 $$
 \item If $\dim_\delta(\text{Supp}(\mathcal{F})) \leq k$
-and $\xi \in Z$ with $\delta(\xi) = k$, then $\xi$ is a
+and $\xi \in \text{Supp}(\mathcal{F})$ with $\delta(\xi) = k$, then $\xi$ is a
 generic point of an irreducible component of $\text{Supp}(\mathcal{F})$.
 \end{enumerate}
 \end{lemma}
@@ -9458,7 +9466,7 @@ c(\mathcal{E}_1^\bullet) c(C(\alpha)^\bullet)$
 in $\prod_{p \geq 0} A^p(Y)$.
 In turn, it suffices to prove this after restricting
 to a connected component of $Y$. Hence we may assume
-the complexes $\mathcal{E}_1^\bullet$ \and $\mathcal{E}_2^\bullet$
+the complexes $\mathcal{E}_1^\bullet$ and $\mathcal{E}_2^\bullet$
 are bounded complexes of finite locally free $\mathcal{O}_Y$-modules
 of fixed rank. In this case the desired equality follows from the
 multiplicativity of Lemma \ref{lemma-additivity-chern-classes}.
@@ -13755,16 +13763,16 @@ in $A^*(X' \to Y')$.
 \begin{proof}
 The fact that $\mathcal{C}$ is finite locally free follows immediately
 from More on Algebra, Lemma \ref{more-algebra-lemma-base-change-lci-bis}.
-Choose a factorization $f = g \circ i$ with $g : P \to Y$ smooth and $i$
-an immersion. Then we can factor $f' = g' \circ i'$ where $g' : P' \to Y'$
+Choose a factorization $f = h \circ i$ with $h : P \to Y$ smooth and $i$
+an immersion. Then we can factor $f' = h' \circ i'$ where $h' : P' \to Y'$
 and $i' : X' \to P'$ the base changes. Picture
 $$
 \xymatrix{
 X' \ar[r] \ar[d] &
 P' \ar[r] \ar[d] &
 Y' \ar[d] \\
-X \ar[r] &
-P \ar[r] &
+X \ar[r]^i &
+P \ar[r]^h &
 Y
 }
 $$
@@ -13792,8 +13800,8 @@ $$
 res(i^!) = c_{top}(\mathcal{C}^\vee) \circ (i')^!
 $$
 in $A^*(X' \to P')$ by an application of Lemma \ref{lemma-gysin-excess}.
-Since finally we have $f^! = i^! \circ g^*$,
-$(f')^! = (i')^! \circ (g')^*$, and $(g')^* = res(g^*)$ we conclude.
+Since finally we have $f^! = i^! \circ h^*$,
+$(f')^! = (i')^! \circ (h')^*$, and $(h')^* = res(h^*)$ we conclude.
 \end{proof}
 
 \begin{lemma}[Blow up formula]

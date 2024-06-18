@@ -526,7 +526,8 @@ See discussion above.
 \label{section-completion-not-exact}
 
 \noindent
-A quick example is the following. Suppose that $R = k[t]$. Let
+A quick example is the following. Suppose that $R = k[t]$. Denote $M^\wedge$
+the completion of an $R$-module with respect to $I = (t)$. Let
 $P = K = \bigoplus_{n \in \mathbf{N}} R$ and
 $M = \bigoplus_{n \in \mathbf{N}} R/(t^n)$. Then there is a short exact
 sequence $0 \to K \to P \to M \to 0$ where the first map is given by
@@ -541,7 +542,8 @@ $K^\wedge$.
 A ``smaller'' example is the following. In the situation of
 Lemma \ref{lemma-noncomplete-quotient}
 the short exact sequence $0 \to J \to R \to R/J \to 0$ does not remain
-exact after completion. Namely, if $f \in J$ is a generator, then
+exact after completion with respect to $I$.
+Namely, if $f \in J$ is a generator, then
 $f : R \to J$ is surjective, hence $R \to J^\wedge$ is surjective, hence
 the image of $J^\wedge \to R$ is $(f) = J$ but the fact that
 $R/J$ is noncomplete means that the kernel of the surjection
@@ -822,7 +824,7 @@ and flatness of $R[x] \to R[[x]]$ implies that $S^{-1}R[x] \to R[[x]]$
 is faithfully flat (details omitted; hint: use Algebra, Lemma
 \ref{algebra-lemma-ff-rings}). Hence
 $$
-S^{-1}R/(ax - b)S^{-1}R \to R[[x]]/(ax - b)R[[x]]
+S^{-1}R[x]/(ax - b)S^{-1}R[x] \to R[[x]]/(ax - b)R[[x]]
 $$
 is injective. We conclude that
 $h rb = (ax - b) g$ for some $h \in S$ and $g \in R[x]$.
@@ -968,6 +970,38 @@ formal algebraic space.
 \begin{proof}
 See discussion above.
 \end{proof}
+
+
+
+
+
+\section{Nonsplit locally split sequence}
+\label{section-nonsplit-locally-split}
+
+\noindent
+Consider the short exact sequence
+$$
+0 \to M \to
+\bigoplus\nolimits_{p\text{ prime}} \mathbf{Z}_{(p)} \to \mathbf{Q} \to 0
+$$
+where $M$ is the kernel of the map on the right which uses the inclusion
+$\mathbf{Z}_{(p)} \to \mathbf{Q}$ on each summand. This sequence of
+$\mathbf{Z}$-modules is nonsplit because there are no nonzero
+homomorphisms $\mathbf{Q} \to \mathbf{Z}_{(p)}$. On the other hand, if
+we localize at any prime $p$, then the sequence becomes split.
+
+\begin{lemma}
+\label{lemma-nonsplit-locally-split}
+There exists a ring $R$ and a nonsplit sequence of modules
+which becomes split Zariski locally.
+\end{lemma}
+
+\begin{proof}
+See discussion above.
+\end{proof}
+
+
+
 
 
 \section{Regular sequences and base change}
@@ -1386,7 +1420,7 @@ $$
 R = k[x, z_1, z_2, z_3, \ldots ] \subset k[[x]].
 $$
 Consider the ideals $\mathfrak m = (x)$ and
-$\mathfrak n = (x - 1, z_1, z_2, \ldots)$ of $R$.
+$\mathfrak n = (x - 1, z_1, z_2 + a_1, z_3 + a_1 + a_2, \ldots)$ of $R$.
 
 \medskip\noindent
 We have $xz_{j + 1} + a_j = z_j$. Hence $R/\mathfrak m = k$
@@ -2479,7 +2513,7 @@ so that $\Spec(B_n) = U_1 \times \ldots \times U_n$ all products
 over $\Spec(\mathbf{Q})$. For $i \leq n$ we set
 $$
 L_{n, i} =
-A_1 \otimes_{\mathbf{Q}} \ldots \otimes_{\mathbf{Q}} M_i
+A_1 \otimes_{\mathbf{Q}} \ldots \otimes_{\mathbf{Q}} L_i
 \otimes_{\mathbf{Q}} \ldots \otimes_{\mathbf{Q}} A_n
 $$
 which is a locally free $B_n$-module of rank $1$. Note that this is
